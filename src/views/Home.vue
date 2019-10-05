@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <List :users="users" @toggleContactDetails="toggleContactDetails" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import axios from 'axios';
+  import List from '../components/List/List';
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'home',
+    components: {
+      List
+    },
+    data() {
+      return {
+        users: []
+      };
+    },
+    mounted() {
+      this.getUsers();
+    },
+    methods: {
+      async getUsers() {
+        const response = await axios.get('https://randomuser.me/api/?results=10');
+        this.$data.users = response.data.results;
+      },
+      // Event passed up from List component
+      toggleContactDetails(event) {
+        event.currentTarget.classList.toggle('card--expanded');
+      }
+    }
   }
-}
 </script>

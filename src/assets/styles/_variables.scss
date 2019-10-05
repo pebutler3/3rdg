@@ -1,0 +1,27 @@
+$white: #fff;
+$black: #000;
+
+$orange: #f86e64;
+$pink: #fe5295;
+$darkPink: #e05570;
+$gradient: linear-gradient(45deg, $orange, $pink);
+$gray: #969696;
+$lightestGray: #f0f1f2;
+
+$font-family: 'Roboto', sans-serif;
+
+// Arrow mixin
+@mixin arrow() {
+  border: solid lighten($gray, 25%);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  margin-left: auto;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+
+  &--up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+}
