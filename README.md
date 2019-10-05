@@ -1,5 +1,3 @@
-# thirdandgrove
-
 ## Project setup
 ```
 npm install
